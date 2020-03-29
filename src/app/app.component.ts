@@ -7,19 +7,25 @@ import { QueryBuilderConfig } from 'angular2-query-builder';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angular-tour-of-heroes';
   query = {
     condition: 'and',
     rules: [
-      {field: 'birthday', operator: '=', value: new Date()}
+      { field: 'age', operator: '<=', value: 'Bob' },
+      { field: 'gender', operator: '>=', value: 'm' }
     ]
   };
-   
+
   config: QueryBuilderConfig = {
     fields: {
-      birthday: {name: 'Birthday', type: 'date', operators: ['=', '<=', '>'],
-        
-      },
+      age: { name: 'Age', type: 'number' },
+      gender: {
+        name: 'Gender',
+        type: 'category',
+        options: [
+          { name: 'Male', value: 'm' },
+          { name: 'Female', value: 'f' }
+        ]
+      }
     }
   }
 }
